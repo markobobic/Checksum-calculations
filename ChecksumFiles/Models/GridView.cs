@@ -11,7 +11,6 @@ namespace ChecksumFiles.Models
         public string NameOfFile { get; set; }
         public string ChecksumSHA512 { get; set; }
         public string FileAttributes { get; set; }
-
         private string fileSize;
 
         public string FileSize
@@ -19,8 +18,6 @@ namespace ChecksumFiles.Models
             get { return fileSize + " " + "kb"; }
             set { fileSize = value; }
         }
-
-
         public string CreationTime { get; set; }
 
         public GridView(string nameOfFile, string checkSum512, string fileSize,string fileAttributes, string creationTime)
@@ -31,6 +28,9 @@ namespace ChecksumFiles.Models
             FileAttributes = fileAttributes;
             CreationTime = creationTime;
 
+        }
+        public GridView()
+        {
         }
 
        

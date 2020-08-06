@@ -31,28 +31,31 @@ namespace ChecksumFiles
         private void InitializeComponent()
         {
             System.Windows.Forms.Button Browse;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.CustomExtension = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Checksum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.NameOfFile = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ChecksumSha512 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FileAttributes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FileSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreationTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             Browse = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // Browse
             // 
-            Browse.Location = new System.Drawing.Point(365, 373);
+            Browse.Location = new System.Drawing.Point(343, 508);
             Browse.Name = "Browse";
             Browse.Size = new System.Drawing.Size(90, 39);
             Browse.TabIndex = 0;
@@ -62,13 +65,13 @@ namespace ChecksumFiles
             // 
             // CustomExtension
             // 
-            this.CustomExtension.Location = new System.Drawing.Point(290, 427);
+            this.CustomExtension.Location = new System.Drawing.Point(256, 553);
             this.CustomExtension.Name = "CustomExtension";
-            this.CustomExtension.Size = new System.Drawing.Size(252, 27);
+            this.CustomExtension.Size = new System.Drawing.Size(252, 39);
             this.CustomExtension.TabIndex = 1;
             this.CustomExtension.Text = "Select custom file extension";
             this.CustomExtension.UseVisualStyleBackColor = true;
-            this.CustomExtension.Click += new System.EventHandler(this.CustomExtension_Click);
+            this.CustomExtension.Click += new System.EventHandler(this.CustomFileExtension_Click);
             // 
             // dataGridView1
             // 
@@ -78,12 +81,12 @@ namespace ChecksumFiles
             this.FileName,
             this.Checksum});
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ActiveBorder;
-            this.dataGridView1.Location = new System.Drawing.Point(75, 27);
+            this.dataGridView1.Location = new System.Drawing.Point(15, 159);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(687, 252);
+            this.dataGridView1.Size = new System.Drawing.Size(775, 252);
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
             // 
@@ -91,10 +94,10 @@ namespace ChecksumFiles
             // 
             this.FileName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.FileName.DataPropertyName = "FileName";
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 8.2F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            this.FileName.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semibold", 8.2F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            this.FileName.DefaultCellStyle = dataGridViewCellStyle3;
             this.FileName.HeaderText = "File Name";
             this.FileName.MinimumWidth = 6;
             this.FileName.Name = "FileName";
@@ -104,9 +107,9 @@ namespace ChecksumFiles
             // 
             this.Checksum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Checksum.DataPropertyName = "Checksum";
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 8.2F, System.Drawing.FontStyle.Bold);
-            this.Checksum.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI Semibold", 8.2F, System.Drawing.FontStyle.Bold);
+            this.Checksum.DefaultCellStyle = dataGridViewCellStyle4;
             this.Checksum.HeaderText = "Checksum";
             this.Checksum.MinimumWidth = 6;
             this.Checksum.Name = "Checksum";
@@ -123,33 +126,13 @@ namespace ChecksumFiles
             this.FileAttributes,
             this.FileSize,
             this.CreationTime});
-            this.dataGridView2.Location = new System.Drawing.Point(12, 302);
+            this.dataGridView2.Location = new System.Drawing.Point(12, 443);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersVisible = false;
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(776, 52);
+            this.dataGridView2.Size = new System.Drawing.Size(775, 47);
             this.dataGridView2.TabIndex = 3;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(23, 282);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(134, 17);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Selected file details:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(290, 460);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(252, 26);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Select different checksum algorithms";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // NameOfFile
             // 
@@ -186,23 +169,57 @@ namespace ChecksumFiles
             this.CreationTime.MinimumWidth = 6;
             this.CreationTime.Name = "CreationTime";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 423);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(134, 17);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Selected file details:";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(256, 598);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(252, 39);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Select different checksum algorithms";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.CustomChecksumAlgoritham_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(343, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(144, 131);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(210)))), ((int)(((byte)(245)))));
-            this.ClientSize = new System.Drawing.Size(817, 541);
+            this.ClientSize = new System.Drawing.Size(834, 668);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.CustomExtension);
             this.Controls.Add(Browse);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Checksum files";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -227,6 +244,7 @@ namespace ChecksumFiles
         private System.Windows.Forms.DataGridViewTextBoxColumn FileAttributes;
         private System.Windows.Forms.DataGridViewTextBoxColumn FileSize;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreationTime;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

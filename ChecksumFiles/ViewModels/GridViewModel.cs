@@ -9,11 +9,15 @@ namespace ChecksumFiles.ViewModels
    public class GridViewModel
     {
         public string FileName { get; set; }
+
         public string Checksum { get; set; }
         public GridViewModel(string fileName, string checkSum)
         {
             FileName = fileName;
             Checksum = checkSum;
+        }
+        public GridViewModel()
+        {
         }
     }
 }
